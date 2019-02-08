@@ -34,7 +34,7 @@ ZSH_THEME=maran
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew osx history python mvn autojump colored-man colorize github virtualenvwrapper pip zsh-syntax-highlighting)
+plugins=(git history python mvn autojump colored-man colorize github pip zsh-syntax-highlighting)
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
@@ -42,16 +42,19 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 #
 echo $PATH
-export PATH=/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
-export PATH=$PATH:/Users/sai/bin
-export PATH=$PATH:/Developer/Platforms/android-sdk-mac_86/platform-tools
-export PATH=$PATH:/Developer/Platforms/android-sdk-mac_86/tools
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/spark/bin:$PATH
 
-export JAVA_HOME=`/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`
+#export PATH=/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH
+#export PATH=$PATH:/Users/sai/bin
+#export PATH=$PATH:/Developer/Platforms/android-sdk-mac_86/platform-tools
+#export PATH=$PATH:/Developer/Platforms/android-sdk-mac_86/tools
+
 export ANT_HOME=/usr/share/ant
 export CATALINA_HOME=/Library/Tomcat/libexec
 export CATALINA_BASE=$CATALINA_HOME
 
+export SPARK_HOME=/usr/local/spark
 
 export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:/usr/local/man:$MANPATH
 
@@ -60,62 +63,15 @@ eval `dircolors ~/.dircolors`
 alias ls='ls --color=always -GF'
 alias grep="grep --color=always"
 alias egrep="egrep --color=always"
-alias rmq='find . | xargs xattr -d com.apple.quarantine'
-alias start_mysql='/usr/local/Cellar/mysql/5.6.22/support-files/mysql.server start'
-alias stop_mysql='/usr/local/Cellar/mysql/5.6.22/support-files/mysql.server stop'
 set -o vi
 
 # set the number of open files to be 1024
 ulimit -S -n 1024
+umask 0022
 
+alias vi='nvim'
 
 # AWS Stuff
 source /usr/local/share/zsh/site-functions/_aws
 
-# Python Stuff
-#
-# pip should only run if there is a virtualenv currently activated
-export PIP_REQUIRE_VIRTUALENV=true
-# # cache pip-installed packages to avoid re-downloading
-export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-gpip(){
-   PIP_REQUIRE_VIRTUALENV="" pip "$@"
-}
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/projects/python/
-source /usr/local/bin/virtualenvwrapper.sh
 
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
-
-# 
-# Go Stuff
-export GOPATH=$HOME/Go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-
-#
-#
-
-export NVM_DIR="/Users/sai/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-source ~/.bin/tmuxinator.zsh
-
-alias halvpn='sudo openconnect --juniper --user h178553 --passwd-on-stdin --cafile .certs/geotrustprimaryca.pem --no-cert-check --script /etc/vpnc/vpnc-script -b  guest.halliburton.com'
-#
-# pssh aliases
-alias psshbcbs='pssh --inline-stdout -h ~/.aiphosts/bcbs -x "-oStrictHostKeyChecking=no -i /Users/sai/aws/BCRS_BCBS_Key.pem" -p 12 -l ec2-user'
-#
-# End pssh alias
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f /Users/sai/.bin/google-cloud-sdk/path.zsh.inc ]; then
-  source '/Users/sai/.bin/google-cloud-sdk/path.zsh.inc'
-fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f /Users/sai/.bin/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/Users/sai/.bin/google-cloud-sdk/completion.zsh.inc'
-fi
