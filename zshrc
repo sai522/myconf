@@ -49,6 +49,9 @@ export PATH=/usr/local/spark/bin:$PATH
 #export PATH=$PATH:/Users/sai/bin
 #export PATH=$PATH:/Developer/Platforms/android-sdk-mac_86/platform-tools
 #export PATH=$PATH:/Developer/Platforms/android-sdk-mac_86/tools
+#
+#Docker Stuff
+export DOCKER_HOST=tcp://localhost:2375
 
 export ANT_HOME=/usr/share/ant
 export CATALINA_HOME=/Library/Tomcat/libexec
@@ -73,5 +76,12 @@ alias vi='nvim'
 
 # AWS Stuff
 source /usr/local/share/zsh/site-functions/_aws
+
+#
+# NVM stuff. Manages Node versions
+#
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
