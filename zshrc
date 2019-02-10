@@ -50,6 +50,8 @@ export PATH=/usr/local/spark/bin:$PATH
 #export PATH=$PATH:/Developer/Platforms/android-sdk-mac_86/platform-tools
 #export PATH=$PATH:/Developer/Platforms/android-sdk-mac_86/tools
 #
+source /usr/share/powerline/bindings/zsh/powerline.zsh
+export EDITOR='nvim'
 #Docker Stuff
 export DOCKER_HOST=tcp://localhost:2375
 
