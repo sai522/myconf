@@ -77,7 +77,7 @@ umask 0022
 alias vi='nvim'
 
 # AWS Stuff
-source /usr/local/share/zsh/site-functions/_aws
+source /usr/local/bin/aws_zsh_completer.sh
 
 #
 # NVM stuff. Manages Node versions
