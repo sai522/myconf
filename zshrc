@@ -59,6 +59,7 @@ export ANT_HOME=/usr/share/ant
 export CATALINA_HOME=/Library/Tomcat/libexec
 export CATALINA_BASE=$CATALINA_HOME
 
+export JAVA_HOME=/usr/lib/jvm/default-java
 export SPARK_HOME=/usr/local/spark
 
 export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:/usr/local/man:$MANPATH
